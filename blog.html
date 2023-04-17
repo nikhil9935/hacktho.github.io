@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>My Blog</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<div class="container">
+		<h1>My Blog</h1>
+		<form>
+			<label for="title">Title:</label>
+			<input type="text" id="title" name="title"><br><br>
+			<label for="content">Content:</label>
+			<textarea id="content" name="content"></textarea><br><br>
+			<button type="button" onclick="saveBlog()">Save Blog</button>
+		</form>
+		<div id="blog-cards">
+			<!-- Blog cards will be dynamically added here -->
+		</div>
+	</div>
+	<p style="color:black;font-size:large; font-weight:bold">Total time spend: <span id="time"></span></p>
+
+    
+  
+	<script src="tracker.js"></script>
+	<script >function saveBlog() {
+		const title = document.getElementById("title").value;
+		const content = document.getElementById("content").value;
+		const now = new Date();
+	
+		const blogCard = document.createElement("div");
+		blogCard.classList.add("card");
+	
+		const blogTitle = document.createElement("h2");
+		blogTitle.innerText = title;
+	
+		const blogContent = document.createElement("p");
+		blogContent.innerText = content;
+	
+		const blogDate = document.createElement("small");
+		blogDate.innerText = now.toLocaleString();
+	
+		blogCard.appendChild(blogTitle);
+		blogCard.appendChild(blogContent);
+		blogCard.appendChild(blogDate);
+	
+		const blogCards = document.getElementById("blog-cards");
+		blogCards.insertBefore(blogCard, blogCards.firstChild);
+	}</script>
+</body>
+</html>
